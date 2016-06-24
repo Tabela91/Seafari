@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: 540e374e31c28594a9d225ed27c7d354
+timeCreated: 1466764674
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: _UNKNOWN_REF_NODE_fosterParent1
+    100002: //RootNode
+    100004: group
+    100006: group 1
+    100008: joint1
+    100010: joint10
+    100012: joint11
+    100014: joint12
+    100016: joint13
+    100018: joint14
+    100020: joint15
+    100022: joint16
+    100024: joint2
+    100026: joint3
+    100028: joint4
+    100030: joint5
+    100032: joint6
+    100034: joint7
+    100036: joint8
+    100038: joint9
+    100040: pasted__joint13
+    100042: pasted__joint14
+    100044: pasted__joint15
+    100046: pasted__joint16
+    100048: pasted__joint17
+    100050: pasted__joint18
+    100052: pasted__joint19
+    100054: pasted__joint20
+    100056: pasted__joint22
+    100058: pasted__joint23
+    100060: pasted__joint24
+    100062: pasted__pSphere14
+    100064: pasted__pSphere15
+    100066: pasted__pSphere2
+    400000: _UNKNOWN_REF_NODE_fosterParent1
+    400002: //RootNode
+    400004: group
+    400006: group 1
+    400008: joint1
+    400010: joint10
+    400012: joint11
+    400014: joint12
+    400016: joint13
+    400018: joint14
+    400020: joint15
+    400022: joint16
+    400024: joint2
+    400026: joint3
+    400028: joint4
+    400030: joint5
+    400032: joint6
+    400034: joint7
+    400036: joint8
+    400038: joint9
+    400040: pasted__joint13
+    400042: pasted__joint14
+    400044: pasted__joint15
+    400046: pasted__joint16
+    400048: pasted__joint17
+    400050: pasted__joint18
+    400052: pasted__joint19
+    400054: pasted__joint20
+    400056: pasted__joint22
+    400058: pasted__joint23
+    400060: pasted__joint24
+    400062: pasted__pSphere14
+    400064: pasted__pSphere15
+    400066: pasted__pSphere2
+    2300000: pasted__pSphere14
+    2300002: pasted__pSphere2
+    3300000: pasted__pSphere14
+    3300002: pasted__pSphere2
+    4300000: pasted__pSphere2
+    4300002: pasted__pSphere14
+    4300004: pasted__pSphere15
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: pasted__pSphere15
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
