@@ -91,6 +91,7 @@ ModelImporter:
     100166: transform7
     100168: transform8
     100170: transform9
+    100172: _UNKNOWN_REF_NODE_fosterParent1
     400000: pCube1
     400002: pPipe1
     400004: pPipe2
@@ -177,6 +178,7 @@ ModelImporter:
     400166: transform7
     400168: transform8
     400170: transform9
+    400172: _UNKNOWN_REF_NODE_fosterParent1
     2300000: pCube1
     2300002: pPipe2
     2300004: pPipe3
