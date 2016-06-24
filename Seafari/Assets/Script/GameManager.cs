@@ -4,12 +4,14 @@ using System.Collections.Generic;//used to create List
 using System.Linq; //method to ToList the questions
 using UnityEngine.UI;// to use Text 
 using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour {
+
+    public GameObject timeUpWarning;//time up text
 
     public Question[] questions;
     //This list will persist between scenes and will contain all questions we have not yet answered.
     private static List<Question> unansweredQuestions;
-
     private Question currentQuestion; //stores the current question value
 
     [SerializeField]//to make it appear in the inspector
@@ -22,40 +24,62 @@ public class GameManager : MonoBehaviour {
     private Text answer3Text;
     [SerializeField]
     private Text answer4Text;
-
     [SerializeField]
     private float timeBetweenQuestions = 1f; //sets delay before next question;
 
+    public Text scoreUIText; // assign it from inspector
+    public Text globalUIText;
+    public float timeLimit;//assigned from inspector. The time limit to answer a question in.
+    private bool runTimer = false;//boolean to control Timer activation
+    private bool buttonsActive = true;//activates buttons 
+
+    IEnumerator StartTimer()
+    {//waits for a few seconds and then sets the timer to true (active)
+        yield return new WaitForSeconds(3f);
+        runTimer = true;
+
+    }
+
     void Start()
     {
+        StartCoroutine(StartTimer());//activates the Timer
         //created an array of questions filled in the inspector. When running the game for the first time we will
         // load those questions into a list of unanswered questions.
-        if(unansweredQuestions == null || unansweredQuestions.Count == 0)
+        if (unansweredQuestions == null || unansweredQuestions.Count == 0)
         {
             unansweredQuestions = questions.ToList<Question>();
         }
 
         SetCurrentQuestion();
 
+        timeUpWarning = GameObject.Find("TimeUp");
+        timeUpWarning.SetActive(false);
+        
+    }
 
-        /* Use this to test questions against the correct answers.
-        if (currentQuestion.A1correct == true)
+    void Update()
+    {
+        if (runTimer)//if timer is active
         {
-            Debug.Log(currentQuestion.questionText + " Answer 1 is correct = " + currentQuestion.A1correct);
+            TimerCountdown();//begin timer countdown method
         }
-        if (currentQuestion.A2correct == true)
+        
+    }
+
+    void TimerCountdown()
+    {
+        //creates a 'time remaining' variable which is equal to the time limit minus Time.deltatime
+        float remaining = timeLimit -= Time.deltaTime;
+        globalUIText.text = remaining.ToString("#0");//assigns the current value of 'remaining' to the Text UI
+        if (timeLimit <= 0)//if the timer reaches zero
         {
-            Debug.Log(currentQuestion.questionText + " Answer 2 is correct = " + currentQuestion.A2correct);
+            timeLimit = 0;//timer is set to zero
+            runTimer = false;//timer is deactivated
+            buttonsActive = false;//deactivates buttons
+            timeUpWarning.SetActive(true);
+            StartCoroutine(TransitionToNextQuestion());//begins transition to next scene
         }
-        if(currentQuestion.A3correct == true)
-        {
-            Debug.Log(currentQuestion.questionText + " Answer 3 is correct = " + currentQuestion.A3correct);
-        }
-        if(currentQuestion.A4correct == true)
-        {
-            Debug.Log(currentQuestion.questionText + " Answer 4 is correct = " + currentQuestion.A4correct);
-        }
-        */
+
     }
 
     void SetCurrentQuestion()
@@ -84,61 +108,71 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);        
     }
 
-    public void UserSelectA1()
+    public void UserSelectA1()//if user selects A1 button
     {
-        if (currentQuestion.A1correct == true)
+        if (buttonsActive)
         {
-            Debug.Log("CORRECT!");
+            runTimer = false;//timer is deactivated
+            if (currentQuestion.A1correct == true)//checks if A1 is the correct answer
+            {
+                Debug.Log("CORRECT!");//if yes, outputs CORRECT
+            }
+            else
+            {
+                Debug.Log("WRONG!");//otherwise outputs WRONG
+            }
+            StartCoroutine(TransitionToNextQuestion());//begin transition to next scene
         }
-        else
-        {
-            Debug.Log("WRONG!");
-        }
-
-        StartCoroutine(TransitionToNextQuestion());
     }
 
     public void UserSelectA2()
     {
-        if (currentQuestion.A2correct == true)
+        if (buttonsActive)
         {
-            Debug.Log("CORRECT!");
+            runTimer = false;//timer is deactivated
+            if (currentQuestion.A2correct == true)
+            {
+                Debug.Log("CORRECT!");
+            }
+            else
+            {
+                Debug.Log("WRONG!");
+            }
+            StartCoroutine(TransitionToNextQuestion());
         }
-        else
-        {
-            Debug.Log("WRONG!");
-        }
-
-
-        StartCoroutine(TransitionToNextQuestion());
     }
-
     public void UserSelectA3()
     {
-        if (currentQuestion.A3correct == true)
+        if (buttonsActive)
         {
-            Debug.Log("CORRECT!");
+            runTimer = false;//timer is deactivated
+            if (currentQuestion.A3correct == true)
+            {
+                Debug.Log("CORRECT!");
+            }
+            else
+            {
+                Debug.Log("WRONG!");
+            }
+            StartCoroutine(TransitionToNextQuestion());
         }
-        else
-        {
-            Debug.Log("WRONG!");
-        }
-
-        StartCoroutine(TransitionToNextQuestion());
     }
 
     public void UserSelectA4()
     {
-        if (currentQuestion.A4correct == true)
+        if (buttonsActive)
         {
-            Debug.Log("CORRECT!");
+            runTimer = false;//timer is deactivated
+            if (currentQuestion.A4correct == true)
+            {
+                Debug.Log("CORRECT!");
+            }
+            else
+            {
+                Debug.Log("WRONG!");
+            }
+            StartCoroutine(TransitionToNextQuestion());
         }
-        else
-        {
-            Debug.Log("WRONG!");
-        }
-
-        StartCoroutine(TransitionToNextQuestion());
     }
 
 }
