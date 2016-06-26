@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/02-LevelSelect.unity
+- path: Assets/Scenes/fbx test.unity
   isLoaded: 1
   isActive: 1
