@@ -30,18 +30,40 @@ public class GameManager : MonoBehaviour {
     public Text scoreUIText; // assign it from inspector
     public Text globalUIText;
     public float timeLimit;//assigned from inspector. The time limit to answer a question in.
-    private bool runTimer = false;//boolean to control Timer activation
+	public float globalScore; //where the end game score is going to be saved. 
+	private bool runTimer = false;//boolean to control Timer activation
     private bool buttonsActive = true;//activates buttons 
+
+	public Button ans1;//place where to place botton
+	public Button ans2;//place where to place botton
+	public Button ans3;//place where to place botton
+	public Button ans4;//place where to place botton
+
+	public Sprite rightAnswer;//place to store sprite
+	public Sprite wrongAnswer;//place to store sprite
+	 
+	GameObject ans1Answer;////////////////////////////////
+	GameObject ans2Answer;////////////////////////////////
+	GameObject ans3Answer;////////////////////////////////
+	GameObject ans4Answer;////////////////////////////////
 
     IEnumerator StartTimer()
     {//waits for a few seconds and then sets the timer to true (active)
-        yield return new WaitForSeconds(3f);
+		
+		DisableButtons();////////////////////////////////
+
+		yield return new WaitForSeconds(3f);
         runTimer = true;
+
+		ans1.interactable = true; //Enables button ////////////////////////////////
+		ans2.interactable = true; //Enables button ////////////////////////////////
+		ans3.interactable = true; //Enables button ////////////////////////////////
+		ans4.interactable = true; //Enables button////////////////////////////////
 
     }
 
     void Start()
-    {
+	{
         StartCoroutine(StartTimer());//activates the Timer
         //created an array of questions filled in the inspector. When running the game for the first time we will
         // load those questions into a list of unanswered questions.
@@ -54,7 +76,7 @@ public class GameManager : MonoBehaviour {
 
         timeUpWarning = GameObject.Find("TimeUp");
         timeUpWarning.SetActive(false);
-        
+		//globalScore = 0;        
     }
 
     void Update()
@@ -108,7 +130,7 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);        
     }
 
-    public void UserSelectA1()//if user selects A1 button
+	public void UserSelectA1()//if user selects A1 button
     {
         if (buttonsActive)
         {
@@ -116,13 +138,19 @@ public class GameManager : MonoBehaviour {
             if (currentQuestion.A1correct == true)//checks if A1 is the correct answer
             {
                 Debug.Log("CORRECT!");//if yes, outputs CORRECT
+				SetGlobalScore (); //////////////////////////////// FUNCTION CREATED AT THE END
+				ans1Answer = GameObject.Find("ans1"); //target button //////////////////////////////// THE SAME FOR EACH ANSWER
+				ans1Answer.GetComponent<Image> ().sprite = rightAnswer;//change button ////////////////////////////////
             }
             else
             {
                 Debug.Log("WRONG!");//otherwise outputs WRONG
+				ans1Answer = GameObject.Find("ans1"); //target button////////////////////////////////THE SAME FOR EACH ANSWER
+				ans1Answer.GetComponent<Image> ().sprite = wrongAnswer;//change button////////////////////////////////
+				DisableButtons();
             }
             StartCoroutine(TransitionToNextQuestion());//begin transition to next scene
-        }
+		} 
     }
 
     public void UserSelectA2()
@@ -133,10 +161,16 @@ public class GameManager : MonoBehaviour {
             if (currentQuestion.A2correct == true)
             {
                 Debug.Log("CORRECT!");
+				SetGlobalScore ();
+				ans2Answer = GameObject.Find("ans2"); //target button
+				ans2Answer.GetComponent<Image> ().sprite = rightAnswer;//change button
             }
             else
             {
                 Debug.Log("WRONG!");
+				ans2Answer = GameObject.Find("ans2"); //target button
+				ans2Answer.GetComponent<Image> ().sprite = wrongAnswer;//change button
+				DisableButtons();
             }
             StartCoroutine(TransitionToNextQuestion());
         }
@@ -149,10 +183,16 @@ public class GameManager : MonoBehaviour {
             if (currentQuestion.A3correct == true)
             {
                 Debug.Log("CORRECT!");
+				SetGlobalScore ();
+				ans3Answer = GameObject.Find("ans3"); //target button
+				ans3Answer.GetComponent<Image> ().sprite = rightAnswer;//change button
             }
             else
             {
                 Debug.Log("WRONG!");
+				ans3Answer = GameObject.Find("ans3"); //target button
+				ans3Answer.GetComponent<Image> ().sprite = wrongAnswer;//change button
+				DisableButtons();
             }
             StartCoroutine(TransitionToNextQuestion());
         }
@@ -166,13 +206,37 @@ public class GameManager : MonoBehaviour {
             if (currentQuestion.A4correct == true)
             {
                 Debug.Log("CORRECT!");
+				SetGlobalScore ();
+				ans4Answer = GameObject.Find("ans4"); //target button
+				ans4Answer.GetComponent<Image> ().sprite = rightAnswer;//change button
             }
             else
             {
                 Debug.Log("WRONG!");
+				ans4Answer = GameObject.Find("ans4"); //target button
+				ans4Answer.GetComponent<Image> ().sprite = wrongAnswer;//change button
+				DisableButtons();
             }
             StartCoroutine(TransitionToNextQuestion());
         }
     }
+
+	void SetGlobalScore ()
+	{
+		DisableButtons();
+		timeLimit = Mathf.Round(timeLimit * 10); //Multiplies the timer by 10 and rounds it.
+		globalScore = timeLimit += globalScore; //Adds the score to the Global score.
+		Debug.Log (timeLimit); //Displays in console for checking.
+		timeLimit = Mathf.Round (timeLimit / 10);//Sets it back to normal so that it will display correctly.
+		scoreUIText.text = globalScore.ToString (); //Displays score in the UI.
+	}
+
+	void DisableButtons()
+	{
+		ans1.interactable = false; //Disables button after click
+		ans2.interactable = false; //Disables button after click
+		ans3.interactable = false; //Disables button after click
+		ans4.interactable = false; //Disables button after click
+	}
 
 }

@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\questionController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Question.cs">
     <Files>
-      <File FileName="Assets\Script\buttons.cs" Line="17" Column="1" />
-      <File FileName="..\..\..\Documents\Sea Game\Assets\Script\collectingData.cs" Line="15" Column="3" />
-      <File FileName="Assets\Script\questionController.cs" Line="20" Column="2" />
+      <File FileName="Assets\Script\GameManager.cs" Line="226" Column="20" />
+      <File FileName="Assets\Script\Question.cs" Line="10" Column="27" />
+      <File FileName="Assets\Script\buttons.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
